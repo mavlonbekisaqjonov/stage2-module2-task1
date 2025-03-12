@@ -11,15 +11,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet("/users") // Alternative to web.xml mapping
+@WebServlet("/users")
 public class GetUsersServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Convert Set<User> to List<User>
+
         List<User> users = new ArrayList<>(Warehouse.getInstance().getUsers());
 
         request.setAttribute("users", users);
-        request.getRequestDispatcher("/users.jsp").forward(request, response);
+        request.getRequestDispatcher("/jsp/users.jsp").forward(request, response);
     }
-
 }
